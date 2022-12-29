@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('r', 'UserController@index');
+
+Route::group(['middleware'=>['jwt.verify']], function () {
+    Route::get('t', function () {
+        return 0;
+    });
 });

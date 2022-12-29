@@ -2,4 +2,4 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'UserController@index']);
+Route::get('/', 'UserController@index');
