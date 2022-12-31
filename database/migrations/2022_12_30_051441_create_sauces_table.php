@@ -17,7 +17,7 @@ class CreateSaucesTable extends Migration
         Schema::create('sauces', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('allergic')->default("[]");
+            $table->text('allergic');
             $table->timestamps();
         });
     }

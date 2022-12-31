@@ -17,13 +17,15 @@ class CreateBeveragesTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('photo');
-            $table->text('allergic')->default("[]"); // default []
+            $table->text('allergic');
             $table->integer('allergic_id')->default(-1);
             $table->text('ingredients');
             $table->double('price', 8, 2);
             // $table->integer('hot')->default(0); // 0 normal, 1 mild, 2 hot, 3 very hot
             // $table->string('sauce')->default("[]"); // default []
             $table->integer('hide')->default(0); // 0 show 1 hide
+            $table->unsignedBigInteger('category');
+            $table->foreign('category')->references('id')->on('categories');
             $table->timestamps();
         });
     }
