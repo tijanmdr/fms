@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        \App\Models\User::create(['Admin', 'tijanmdr@gmail.com', Hash::make('Password'), '26 Mannheim Street', '1994/09/18']);
+        \App\Models\User::create(['Admin', 'tijanmdr@gmail.com', Hash::make('Password'), 0, '26 Mannheim Street', '1994/09/18']);
     }
 }
