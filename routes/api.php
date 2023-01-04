@@ -14,10 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('r', 'UserController@index');
+Route::get('login', 'UserController@check');
+Route::post('login', 'UserController@login');
 
 Route::group(['middleware'=>['jwt.verify']], function () {
-    Route::get('t', function () {
-        return 0;
-    });
+    Route::get('user_detail', 'UserController@userDetail');
+});
+
+// 404 error in json
+Route::get('/{blob}', function ($blob) {
+    return returnMessage(false, 'Request error!');
 });
