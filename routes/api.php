@@ -19,6 +19,7 @@ Route::post('login', 'UserController@login');
 
 Route::group(['middleware'=>['jwt.verify']], function () {
     Route::get('user_detail', 'UserController@userDetail');
+    Route::post('add_user', 'UserController@addUser');
 });
 
 // 404 error in json
