@@ -178,7 +178,7 @@ return [
         /*
          * JWT Token Provider...
          */
-        Tymon\JWTAuth\Providers\LaravelServiceProvider::class
+        // Tymon\JWTAuth\Providers\LaravelServiceProvider::class
 
     ],
 

@@ -54,7 +54,7 @@ class UserController extends Controller
         $user = User::create($req);
 
         if ($user) 
-            return returnMessage(true, 'User: '.$req['name'].' has been added!', $req);
+            return returnMessage(true, 'User: '.$req['name'].' has been added!', $user);
         else 
             return returnMessage(false, 'User cannot be added!');
 
