@@ -19,4 +19,9 @@ class Category extends Model
         'after', 
         'before'
     ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
 }

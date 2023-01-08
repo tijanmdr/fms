@@ -18,4 +18,9 @@ class Sauce extends Model
         'name',
         'allergic'
     ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
 }

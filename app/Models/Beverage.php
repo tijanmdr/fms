@@ -23,4 +23,9 @@ class Beverage extends Model
         'sauce',
         'hide',
     ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
 }
