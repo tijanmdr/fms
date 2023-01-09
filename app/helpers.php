@@ -25,3 +25,10 @@ function returnMessage($status, $message, $data = [], $statusCode = 0) {
             return response()->json(['status' => $status, 'message' => $message, 'data'=>$data]);
     }
 }
+
+function allergicJSON() {
+    $list = [
+        ["Lactose"], ["Gluten"], ["Soy"]
+    ];
+    return $list;
+}
