@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Food extends Model
 {
+
+    protected $table = 'foods';
     use HasFactory;
     
     /**
@@ -24,6 +26,7 @@ class Food extends Model
         'hot',
         'sauce',
         'hide',
+        'category'
     ];
 
     protected $hidden = [

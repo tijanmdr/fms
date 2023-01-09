@@ -20,8 +20,9 @@ class Beverage extends Model
         'allergic',
         'allergic_id',
         'ingredients',
-        'sauce',
         'hide',
+        'price', 
+        'category'
     ];
 
     protected $hidden = [
