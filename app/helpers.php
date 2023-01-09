@@ -33,7 +33,7 @@ function allergicJSON() {
     return $list;
 }
 
-function uploadPhotos($file, $name) {
+function uploadPhotos($file, $name='') {
     $destination_path = 'uploads';
     $file_name = bin2hex(date('YmdHis')).'.'.$file->getClientOriginalExtension();
     if (!file_exists($destination_path)) {
