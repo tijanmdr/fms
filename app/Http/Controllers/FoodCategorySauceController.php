@@ -35,6 +35,10 @@ class FoodCategorySauceController extends Controller
 
     public function updateCategory(Request $req) {
         $req = $req->only('id', 'name', 'before', 'after');
+
+        if (!array_key_exists('id', $req))
+            return returnMessage(false, 'The ID field is required!');
+        
         $validate = Validator::make($req, [
             'id' => 'required|exists:categories',
             'name' => 'string|unique:categories,name,'.$req['id'],
@@ -99,6 +103,10 @@ class FoodCategorySauceController extends Controller
 
     public function updateSauce(Request $req) {
         $req = $req->only('id', 'name', 'allergic');
+
+        if (!array_key_exists('id', $req))
+            return returnMessage(false, 'The ID field is required!');
+            
         $validate = Validator::make($req, [
             'id' => 'required|exists:sauces',
             'name' => 'string|unique:categories,name,'.$req['id'],

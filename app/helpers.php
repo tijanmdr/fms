@@ -42,3 +42,10 @@ function uploadPhotos($file, $name='') {
     $file->move($destination_path, $file_name);
     return $destination_path.'/'.$file_name;
 }
+
+
+function backupCheckID() {
+    if (!array_key_exists('id', $req)) {
+        return returnMessage(false, 'The ID field is required!');
+    }
+}

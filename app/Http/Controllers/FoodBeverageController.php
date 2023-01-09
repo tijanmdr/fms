@@ -15,11 +15,12 @@ class FoodBeverageController extends Controller
         $validate = Validator::make($req, [
             'name' => 'required|string|unique:foods,name',
             'photo' => 'mimes:png,jpg,jpeg|max:1024',
-            'ingredients' => 'required',
+            'ingredients' => 'required|string',
             'price' => 'required|numeric',
+            'allergic' => 'string',
             'hot' => 'integer',
             'sauce' => 'string',
-            'category' => 'required|numeric|exists:categories,id',
+            'category' => 'required|exists:categories,id',
         ]);
         
         if ($validate->fails()) {
@@ -44,7 +45,49 @@ class FoodBeverageController extends Controller
     }
 
     public function updateFood(Request $req) {
+        $req = $req->only('id', 'name', 'photo', 'ingredients', 'price', 'allergic', 'hot', 'sauce', 'category');
+        if (!array_key_exists('id', $req))
+            return returnMessage(false, 'The ID field is required!');
 
+        $validate = Validator::make($req, [
+            'id' => 'exists:foods',
+            'name' => 'string|unique:foods,name,'.$req['id'],
+            'photo' => 'mimes:png,jpg,jpeg|max:1024',
+            'ingredients' => 'string',
+            'price' => 'numeric',
+            'allergic' => 'string',
+            'hot' => 'integer',
+            'sauce' => 'string',
+            'category' => 'exists:categories,id',
+        ]);
+        
+        if ($validate->fails()) {
+            $error = validateErrorMessage($validate);
+            return returnMessage(false, $error);
+        }
+
+        $food = Food::find($req['id']);
+        $old_photo = $food->photo;
+
+        if (array_key_exists('photo', $req)) {
+            $req['photo'] = uploadPhotos($req['photo']);
+            $req['flag'] = 0;
+        } else {
+            $req['photo'] = $old_photo;
+            $req['flag'] = 1;
+        }
+
+        try {
+            $food = $food->update($req);
+            if ($req['flag'] === 0) {
+                if (file_exists($old_photo))
+                    unlink($old_photo);
+            }
+            return \returnMessage(true, 'Food updated successfully!');
+        } catch (Exception $e) {
+            if (array_key_exists('photo', $req)) { unlink($req['photo']); }
+            return \returnMessage(false, $e->getMessage());
+        }
     }
 
     public function deleteFood() {
@@ -52,7 +95,8 @@ class FoodBeverageController extends Controller
     }
 
     public function listFoods() {
-
+        $food = Food::get();
+        return returnMessage(true, 'List of foods retreival successful!', $food);
     }
 
     public function createBeverage(Request $req) {
@@ -60,9 +104,10 @@ class FoodBeverageController extends Controller
         $validate = Validator::make($req, [
             'name' => 'required|string|unique:beverages,name',
             'photo' => 'mimes:png,jpg,jpeg|max:1024',
-            'ingredients' => 'required',
+            'ingredients' => 'required|string',
             'price' => 'required|numeric',
-            'category' => 'required|numeric|exists:categories,id',
+            'allergic' => 'string',
+            'category' => 'required|exists:categories,id',
         ]);
         
         if ($validate->fails()) {
@@ -87,7 +132,47 @@ class FoodBeverageController extends Controller
     }
 
     public function updateBeverage(Request $req) {
+        $req = $req->only('id', 'name', 'photo', 'ingredients', 'price', 'allergic', 'category');
+        if (!array_key_exists('id', $req))
+            return returnMessage(false, 'The ID field is required!');
 
+        $validate = Validator::make($req, [
+            'id' => 'exists:beverages',
+            'name' => 'string|unique:beverages,name,'.$req['id'],
+            'photo' => 'mimes:png,jpg,jpeg|max:1024',
+            'ingredients' => 'string',
+            'price' => 'numeric',
+            'allergic' => 'string',
+            'category' => 'exists:categories,id',
+        ]);
+        
+        if ($validate->fails()) {
+            $error = validateErrorMessage($validate);
+            return returnMessage(false, $error);
+        }
+
+        $beverage = Beverage::find($req['id']);
+        $old_photo = $beverage->photo;
+
+        if (array_key_exists('photo', $req)) {
+            $req['photo'] = uploadPhotos($req['photo']);
+            $req['flag'] = 0;
+        } else {
+            $req['photo'] = $old_photo;
+            $req['flag'] = 1;
+        }
+
+        try {
+            $beverage = $beverage->update($req);
+            if ($req['flag'] === 0) {
+                if (file_exists($old_photo))
+                    unlink($old_photo);
+            }
+            return \returnMessage(true, 'everage updated successfully!');
+        } catch (Exception $e) {
+            if (array_key_exists('photo', $req)) { unlink($req['photo']); }
+            return \returnMessage(false, $e->getMessage());
+        }
     }
 
     public function deleteBeverage() {
@@ -95,6 +180,7 @@ class FoodBeverageController extends Controller
     }
 
     public function listBeverages() {
-
+        $beverage = Beverage::get();
+        return returnMessage(true, 'List of beverages retreival successful!', $beverage);
     }
 }
