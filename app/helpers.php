@@ -32,3 +32,13 @@ function allergicJSON() {
     ];
     return $list;
 }
+
+function uploadPhotos($file, $name) {
+    $destination_path = 'uploads';
+    $file_name = bin2hex(date('YmdHis')).'.'.$file->getClientOriginalExtension();
+    if (!file_exists($destination_path)) {
+        mkdir($destination_path, 0777, true);
+    }
+    $file->move($destination_path, $file_name);
+    return $destination_path.'/'.$file_name;
+}
