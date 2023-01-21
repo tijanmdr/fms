@@ -32,7 +32,11 @@ class UserController extends Controller
     }
 
     public function userDetail() {
-        $user = JWTAuth::parseToken()->authenticate();
+        if (isset($_GET['user'])) {
+            $user = User::find($_GET['user']); 
+        }
+        else 
+            $user = JWTAuth::parseToken()->authenticate();
         if (!$user) 
             return returnMessage(false, 'Cannot retrieve user details!');
         return returnMessage(true, 'User details retrieved!', $user->only('email', 'name', 'access'));
