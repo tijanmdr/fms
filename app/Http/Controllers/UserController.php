@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 class UserController extends Controller
-{    
+{
     public function login(Request $request) {
         $req = $request->only('email', 'password');
         $validate = Validator::make($req, [
@@ -27,8 +27,9 @@ class UserController extends Controller
             }
         } catch (JWTException $e) {
             return returnMessage(false, 'Could not create token.');
-        }
-        return returnMessage(true, 'Login Successful', ['token'=>$token]);
+        }        
+        $user = JWTAuth::user();
+        return returnMessage(true, 'Login Successful', ['token'=>$token, 'user'=>$user]);
     }
 
     public function userDetail() {
@@ -39,7 +40,7 @@ class UserController extends Controller
             $user = JWTAuth::parseToken()->authenticate();
         if (!$user) 
             return returnMessage(false, 'Cannot retrieve user details!');
-        return returnMessage(true, 'User details retrieved!', $user->only('email', 'name', 'access'));
+        return returnMessage(true, 'User details retrieved!', $user->only('email', 'name', 'access', 'id', 'address', 'dob'));
     }
     
     public function addUser(Request $req) {

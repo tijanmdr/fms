@@ -26,7 +26,7 @@ class Food extends Model
         'hot',
         'sauce',
         'hide',
-        // 'category'
+        'category'
     ];
 
     protected $hidden = [

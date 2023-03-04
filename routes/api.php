@@ -3,17 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
 Route::get('login', 'UserController@check');
 Route::post('login', 'UserController@login');
 
@@ -48,6 +37,12 @@ Route::group(['middleware'=>['jwt.verify']], function () {
     Route::patch('update_beverage', 'FoodBeverageController@updateBeverage');
     Route::delete('delete_beverage/{id}', 'FoodBeverageController@deleteBeverage');
     Route::get('list_beverages', 'FoodBeverageController@listBeverages');
+
+    // take order
+    Route::post('create_order', 'OrderController@createOrder');
+    Route::delete('delete_order', 'OrderController@deleteOrder');
+    Route::patch('update_order', 'OrderController@updateOrder');
+    Route::post('print_order', 'OrderController@printOrder');
 });
 
 // 404 error in json
