@@ -44,10 +44,27 @@ class OrderController extends Controller
                 ]);
 
                 if ($order) {
-                    foreach($req['order_list'] as $order) {
-                        return $order;
+                    foreach($req['order_list'] as $_order) {
+                        $input = [
+                            'order'=>$order->id, 
+                            'user'=>$user, 
+                            'entree'=>$_order['entree'], 
+                            'quantity'=>$_order['quantity'], 
+                            'serve'=>1, 
+                            'note'=>''
+                        ];
+                        if ($_order['food_beverage'] === 0) 
+                            $input['food_id'] = $_order['id'];
+                        else 
+                            $input['beverage_id'] = $_order['id'];
+                        
+                        if (isset($_order['note'])) 
+                            $input['note'] = $_order['note'];
+
+                        $this->orderDetail->create($input);
                     }
-                    DB::rollback();
+
+                    DB::commit();
                 } else {
                     DB::rollback();
                 }

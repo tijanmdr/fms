@@ -10,7 +10,7 @@ class OrderDetail extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user', 'notes', 'table'
+        'order', 'user', 'food_id', 'beverage_id', 'entree', 'serve', 'quantity', 'note'
     ];
 
     protected $hidden = [];

@@ -26,7 +26,7 @@ class CreateOrderDetailsTable extends Migration
             $table->integer('entree'); // 0 - entree, 1 - mains, 2 - dessert
             $table->integer('serve'); // 0 - first serve, 1 - second serve and so on
             $table->integer('quantity')->default(1);
-            $table->string('notes');
+            $table->string('note');
             $table->timestamps();
         });
     }
