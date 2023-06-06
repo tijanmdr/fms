@@ -9,5 +9,9 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user', 'notes', 'table'
+    ];
+    
     protected $hidden = [];
 }

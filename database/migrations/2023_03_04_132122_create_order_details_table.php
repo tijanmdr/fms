@@ -23,8 +23,9 @@ class CreateOrderDetailsTable extends Migration
             $table->foreign('food_id')->references('id')->on('foods');
             $table->unsignedBigInteger('beverage_id')->nullable();
             $table->foreign('beverage_id')->references('id')->on('beverages');
-            $table->integer('entree');
+            $table->integer('entree'); // 0 - entree, 1 - mains, 2 - dessert
             $table->integer('serve'); // 0 - first serve, 1 - second serve and so on
+            $table->integer('quantity')->default(1);
             $table->string('notes');
             $table->timestamps();
         });
