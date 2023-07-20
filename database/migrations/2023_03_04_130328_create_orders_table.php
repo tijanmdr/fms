@@ -18,6 +18,8 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('user');
             $table->foreign('user')->references('id')->on('users');
             $table->integer('table');
+            $table->integer('status')->default(0); // 0 - pending, 1 - cooking, 2 - cooked, 3 - deleted
+            $table->integer('destroyed_by')->nullable();
             $table->string('notes');
             $table->timestamps();
         });

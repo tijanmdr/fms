@@ -73,7 +73,52 @@ class OrderController extends Controller
                 return $e;
             }
 
-            return $req;
+            return returnMessage(true, 'The order has been placed!');
+        }
+    }
+
+    public function changeOrderStatus(Request $req)
+    {
+        $req = $req->only('id', 'status');
+        $validate = Validator::make($req, [
+            'id'=>'required|integer|exists:orders,id',
+            'status' => 'required|integer|min:1|max:2'
+        ]);
+
+        if ($validate->fails()) {
+            $error = validateErrorMessage($validate);
+            return returnMessage(false, $error);
+        } else {
+            $order = $this->order->whereId($req['id'])->checkStatus(3)->first(); // checking destroyed orders
+            if ($order) {
+                $order->update(['status'=>$req['status']]);
+                return returnMessage(true, 'The order status has been updated!');
+            } else {
+                return returnMessage(false, 'The order could not be found!');
+            }
+        }
+    }
+
+    public function deleteOrder(Request $req)
+    {
+        $req = $req->only('id');
+        $validate = Validator::make($req, [
+            'id'=>'required|integer|exists:orders,id',
+        ]);
+
+        $user = JWTAuth::user()->id;
+
+        if ($validate->fails()) {
+            $error = validateErrorMessage($validate);
+            return returnMessage(false, $error);
+        } else {
+            $order = $this->order->whereId($req['id'])->checkStatus(3)->first(); // checking destroyed orders
+            if ($order) {
+                $order->update(['status'=>3, 'destroyed_by'=>$user]);
+                return returnMessage(true, 'The order status has been deleted!');
+            } else {
+                return returnMessage(false, 'The order could not be found!');
+            }
         }
     }
 }

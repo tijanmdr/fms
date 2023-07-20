@@ -181,6 +181,6 @@ class FoodBeverageController extends Controller
 
     public function listBeverages() {
         $beverage = Beverage::get();
-        return returnMessage(true, 'List of beverages retreival successful!', $beverage);
+        return returnMessage(true, 'List of beverages retrieval successful!', $beverage);
     }
 }
