@@ -14,4 +14,16 @@ class OrderDetail extends Model
     ];
 
     protected $hidden = [];
+
+
+
+    public function beverageName()
+    {
+        return $this->belongsTo(Beverage::class, 'beverage_id');
+    }
+
+    public function foodName()
+    {
+        return $this->belongsTo(Food::class,'food_id');
+    }
 }

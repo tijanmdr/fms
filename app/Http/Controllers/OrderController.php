@@ -121,4 +121,29 @@ class OrderController extends Controller
             }
         }
     }
+
+    public function printOrder(Request $req)
+    {
+        $req = $req->only('id');
+        $validate = Validator::make($req, [
+            'id'=>'required|integer|exists:orders,id',
+        ]);
+
+
+        if ($validate->fails()) {
+            $error = validateErrorMessage($validate);
+            return returnMessage(false, $error);
+        } else {
+            $order = $this->order->checkStatus(0)->find($req['id']);
+            $order['details'] = $order->details;
+            foreach ($order['details'] as $detail) {
+                if ($detail->food_id) {
+                    $detail->item_details = $detail->foodName;
+                } elseif($detail->beverage_id) {
+                    $detail->item_details = $detail->beverageName;
+                }
+            }
+            return $order;
+        }
+    }
 }

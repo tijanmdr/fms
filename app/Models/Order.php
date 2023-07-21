@@ -36,4 +36,9 @@ class Order extends Model
     public function scopeCheckStatus($query, $status) {
         return $query->where('status', '!=', $status);
     }
+
+    public function details()
+    {
+        return $this->hasMany(OrderDetail::class, 'order');
+    }
 }
