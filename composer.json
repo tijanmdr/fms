@@ -52,7 +52,7 @@
             "@php artisan key:generate --ansi"
         ],
         "fresh": [
-            "@php artisan cache:clear && php artisan route:clear && composer dump-autoload && php artisan serve"
+            "@php artisan cache:clear && php artisan route:clear && composer dump-autoload"
         ]
     },
     "extra": {
