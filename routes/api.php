@@ -40,6 +40,7 @@ Route::group(['middleware'=>['jwt.verify']], function () {
 
     // take order
     Route::post('create_order', 'OrderController@createOrder');
+    Route::post('create_order_next', 'OrderController@createOrder');
     Route::post('change_order_status', 'OrderController@changeOrderStatus');
     Route::delete('delete_order', 'OrderController@deleteOrder');
 //    Route::patch('update_order', 'OrderController@updateOrder');

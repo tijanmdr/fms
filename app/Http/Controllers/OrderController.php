@@ -19,16 +19,7 @@ class OrderController extends Controller
 
     public function createOrder(Request $req) {
         $req = $req->only('table', 'order_list', 'note');
-        $validate = Validator::make($req, [
-            'table'=>'required|integer',
-            'order_list'=>'required|array',
-            'order_list.*.id'=>'required|integer',
-            'order_list.*.quantity'=>'required|integer',
-            'order_list.*.food_beverage'=>'required|integer|min:0|max:1', // food - 0, beverage - 1
-            'order_list.*.entree'=>'required|integer|min:0|max:2', // 0 - entree, 1 - mains, 2 - dessert
-            'order_list.*.note'=>'string',
-            'note' => 'string',
-        ]);
+        $validate = $this->_validationOrder($req);
         
         if ($validate->fails()) {
             $error = validateErrorMessage($validate);
@@ -37,47 +28,13 @@ class OrderController extends Controller
             $user = JWTAuth::user()->id;
             $order = $this->order->where('table',$req['table'])->checkStatus(2,3)->count();
 
-            if ($order>0) { // avoid placing order if the order is not finished or deleted
-                return returnMessage(false, 'Sorry, the order in table '.$req['table'].' is still active. Cannot process order on this table!');
-            }
-
-            try {
-                DB::beginTransaction();
-                $order = $this->order->create([
-                    'user'=> $user, 
-                    'table'=>$req['table'], 
-                    'notes'=>$req['note']
-                ]);
-
-                if ($order) {
-                    foreach($req['order_list'] as $_order) {
-                        $input = [
-                            'order'=>$order->id, 
-                            'user'=>$user, 
-                            'entree'=>$_order['entree'], 
-                            'quantity'=>$_order['quantity'], 
-                            'serve'=>1, 
-                            'note'=>''
-                        ];
-                        if ($_order['food_beverage'] === 0) 
-                            $input['food_id'] = $_order['id'];
-                        else 
-                            $input['beverage_id'] = $_order['id'];
-                        
-                        if (isset($_order['note'])) 
-                            $input['note'] = $_order['note'];
-
-                        $this->orderDetail->create($input);
-                    }
-
-                    DB::commit();
-                } else {
-                    DB::rollback();
+            if (!str_contains(url()->current(), 'create_order_next')) { // checking new order and creating another for same table
+                if ($order>0) { // avoid placing order if the order is not finished or deleted
+                    return returnMessage(false, 'Sorry, the order in table '.$req['table'].' is still active. Cannot process order on this table!');
                 }
-            } catch (\Exception $e) 
-            {
-                return $e;
             }
+
+            $this->_createOrder($user, $req);
 
             return returnMessage(true, 'The order has been placed!');
         }
@@ -167,5 +124,60 @@ class OrderController extends Controller
             }
             return returnMessage(true, 'The order details are successfully retrieved!', $order);
         }
+    }
+
+    public function _createOrder($user, $req) {
+        try {
+            DB::beginTransaction();
+            $order = $this->order->create([
+                'user'=> $user,
+                'table'=>$req['table'],
+                'notes'=>$req['note']
+            ]);
+
+            if ($order) {
+                foreach($req['order_list'] as $_order) {
+                    $input = [
+                        'order'=>$order->id,
+                        'user'=>$user,
+                        'entree'=>$_order['entree'],
+                        'quantity'=>$_order['quantity'],
+                        'serve'=>1,
+                        'note'=>''
+                    ];
+                    if ($_order['food_beverage'] === 0)
+                        $input['food_id'] = $_order['id'];
+                    else
+                        $input['beverage_id'] = $_order['id'];
+
+                    if (isset($_order['note']))
+                        $input['note'] = $_order['note'];
+
+                    $this->orderDetail->create($input);
+                }
+
+                DB::commit();
+            } else {
+                DB::rollback();
+            }
+        } catch (\Exception $e)
+        {
+            return $e;
+        }
+    }
+
+    public function _validationOrder($req)
+    {
+        $validation = Validator::make($req, [
+            'table'=>'required|integer',
+            'order_list'=>'required|array',
+            'order_list.*.id'=>'required|integer',
+            'order_list.*.quantity'=>'required|integer',
+            'order_list.*.food_beverage'=>'required|integer|min:0|max:1', // food - 0, beverage - 1
+            'order_list.*.entree'=>'required|integer|min:0|max:2', // 0 - entree, 1 - mains, 2 - dessert
+            'order_list.*.note'=>'string',
+            'note' => 'string',
+        ]);
+        return $validation;
     }
 }
