@@ -35,6 +35,12 @@ class OrderController extends Controller
             return returnMessage(false, $error);
         } else {
             $user = JWTAuth::user()->id;
+            $order = $this->order->where('table',$req['table'])->checkStatus(2,3)->count();
+
+            if ($order>0) { // avoid placing order if the order is not finished or deleted
+                return returnMessage(false, 'Sorry, the order in table '.$req['table'].' is still active. Cannot process order on this table!');
+            }
+
             try {
                 DB::beginTransaction();
                 $order = $this->order->create([
