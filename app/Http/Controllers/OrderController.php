@@ -138,12 +138,12 @@ class OrderController extends Controller
             $order['details'] = $order->details;
             foreach ($order['details'] as $detail) {
                 if ($detail->food_id) {
-                    $detail->item_details = $detail->foodName;
+                    $detail->foodName;
                 } elseif($detail->beverage_id) {
-                    $detail->item_details = $detail->beverageName;
+                    $detail->beverageName;
                 }
             }
-            return $order;
+            return returnMessage(true, 'The order details are successfully retrieved!', $order);
         }
     }
 }

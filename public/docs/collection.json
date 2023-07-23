@@ -1,0 +1,1071 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost"
+        }
+    ],
+    "info": {
+        "name": "FMS ApiDoc",
+        "_postman_id": "99e0520f-4b6b-4193-90b7-232ea28cdd53",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "POST api\/create_category",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/create_category",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/create_category"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"excepturi\",\"before\":\"12:19\",\"after\":\"2091-09-28\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "PATCH api\/update_category",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/update_category",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/update_category"
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"id\":\"quo\",\"before\":\"12:19\",\"after\":\"2103-10-17\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/delete_category\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/delete_category\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/delete_category\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "et",
+                                    "description": "The ID of the delete category."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/list_categories",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/list_categories",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/list_categories"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "57"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"status\":false,\"message\":\"Token not found!\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/create_sauce",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/create_sauce",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/create_sauce"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"reprehenderit\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "PATCH api\/update_sauce",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/update_sauce",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/update_sauce"
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"id\":\"vitae\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/delete_sauce\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/delete_sauce\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/delete_sauce\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "dicta",
+                                    "description": "The ID of the delete sauce."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/list_sauces",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/list_sauces",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/list_sauces"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "56"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"status\":false,\"message\":\"Token not found!\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/create_food",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/create_food",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/create_food"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"ab\",\"photo\":\"egftxbkiczisdxqpsfhbd\",\"ingredients\":\"ullam\",\"price\":15922035.351457,\"allergic\":\"est\",\"hot\":17,\"sauce\":\"id\",\"category\":\"error\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "PATCH api\/update_food",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/update_food",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/update_food"
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"photo\":\"kc\",\"ingredients\":\"laudantium\",\"price\":14.92,\"allergic\":\"rerum\",\"hot\":5,\"sauce\":\"porro\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/delete_food\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/delete_food\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/delete_food\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "molestiae",
+                                    "description": "The ID of the delete food."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/list_foods",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/list_foods",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/list_foods"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "55"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"status\":false,\"message\":\"Token not found!\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/create_beverage",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/create_beverage",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/create_beverage"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"et\",\"photo\":\"tubermnvbgasovowple\",\"ingredients\":\"fugit\",\"price\":1953993.2,\"allergic\":\"quos\",\"category\":\"labore\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "PATCH api\/update_beverage",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/update_beverage",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/update_beverage"
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"photo\":\"zevkiniwyedjkvvniea\",\"ingredients\":\"voluptatem\",\"price\":416.883796546,\"allergic\":\"dolorum\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/delete_beverage\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/delete_beverage\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/delete_beverage\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "laboriosam",
+                                    "description": "The ID of the delete beverage."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/list_beverages",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/list_beverages",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/list_beverages"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "54"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"status\":false,\"message\":\"Token not found!\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/create_order",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/create_order",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/create_order"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"table\":17,\"order_list\":[\"aperiam\"],\"note\":\"quod\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/change_order_status",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/change_order_status",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/change_order_status"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"id\":20,\"status\":1}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/delete_order",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/delete_order",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/delete_order"
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"id\":1}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/print_order",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/print_order",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/print_order"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"id\":20}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/{blob}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/:blob",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/:blob",
+                            "variable": [
+                                {
+                                    "id": "blob",
+                                    "key": "blob",
+                                    "value": "esse",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "53"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":false,\"message\":\"The url that you requested could not be found!\"}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "User Access Control",
+            "description": "",
+            "item": [
+                {
+                    "name": "Login User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"noelia.roberts@example.com\",\"password\":\"TC{Jtl0xKlJ!q%\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get User Detail",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/user_detail",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/user_detail"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"status\":false,\"message\":\"Token not found!\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/add_user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/add_user",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/add_user"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"grimes.orlando@example.net\",\"password\":\"\\\"jF(mpFP.wISU-8t\",\"name\":\"quia\",\"address\":\"repudiandae\",\"dob\":\"2023-07-21T12:19:54\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "PATCH api\/update_user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/update_user",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/update_user"
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Details or Password",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/update_user_pwd",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/update_user_pwd"
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"id\":3,\"password\":\"zDFmtCm4\\\"dy%VIceu5Y>\",\"password_confirmation\":\"libero\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get user details",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/list_users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/list_users"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "58"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"status\":false,\"message\":\"Token not found!\"}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

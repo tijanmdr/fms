@@ -9,8 +9,23 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
+/**
+ * Class UserController
+ * @package App\Http\Controllers
+ */
 class UserController extends Controller
 {
+    /**
+     * Login User
+     *
+     * @bodyParam email string Email of User
+     * @bodyParam password string Password of User
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @group User Access Control
+     */
     public function login(Request $request) {
         $req = $request->only('email', 'password');
         $validate = Validator::make($req, [
@@ -32,6 +47,13 @@ class UserController extends Controller
         return returnMessage(true, 'Login Successful', ['token'=>$token, 'user'=>$user]);
     }
 
+    /**
+     * Get User Detail
+     *
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @group User Access Control
+     */
     public function userDetail() {
         if (isset($_GET['user'])) {
             $user = User::find($_GET['user']); 
@@ -42,7 +64,13 @@ class UserController extends Controller
             return returnMessage(false, 'Cannot retrieve user details!');
         return returnMessage(true, 'User details retrieved!', $user->only('email', 'name', 'access', 'id', 'address', 'dob'));
     }
-    
+
+    /**
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @group User Access Control
+     */
     public function addUser(Request $req) {
         $req = $req->only('email', 'password', 'name', 'address', 'dob');
         $validate = Validator::make($req, [
@@ -67,6 +95,12 @@ class UserController extends Controller
 
     }
 
+    /**
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @group User Access Control
+     */
     public function updateUser(Request $req) {
         $data = $this->updateDetailsOrPassword($req, 'detail');
         if ($data['validate']->fails()) {
@@ -85,6 +119,18 @@ class UserController extends Controller
             return returnMessage(false, 'Something went wrong. Please try again!');
     }
 
+    /**
+     * Update Details or Password
+     *
+     * @bodyParam id int User ID
+     * @bodyParam password string New Password
+     * @bodyParam password_confirmation string New Password Confirmation
+     *
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @group User Access Control
+     */
     public function updateUserPassword(Request $req) {
         $data = $this->updateDetailsOrPassword($req, 'password');
         if ($data['validate']->fails()) {
@@ -104,6 +150,12 @@ class UserController extends Controller
             return returnMessage(false, 'Something went wrong. Please try again!');
     }
 
+    /**
+     * Get user details
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @group User Access Control
+     */
     public function listUsers() {
         $user = User::get();
         if (!$user) 
@@ -111,8 +163,24 @@ class UserController extends Controller
         return returnMessage(true, 'User details retrieved!', $user);
     }
 
+
+    /**
+     * Update Details or Password
+     *
+     * @bodyParam id int User ID
+     * @bodyParam password string New Password
+     * @bodyParam password_confirmation string New Password Confirmation
+     * @bodyParam name string Updated Name
+     * @bodyParam address string Updated Address
+     * @bodyParam dob date Updated Date of Birth
+     *
+     * @param $req
+     * @param $_option
+     * @return array
+     *
+     * @group User Access Control
+     */
     public function updateDetailsOrPassword($req, $_option) {
-        $validate;
         $data = [];
 
         if ($_option === 'password') {

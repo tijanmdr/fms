@@ -1,0 +1,813 @@
+openapi: 3.0.3
+info:
+  title: 'FMS ApiDoc'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/create_category:
+    post:
+      summary: ''
+      operationId: postApiCreate_category
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: excepturi
+                before:
+                  type: string
+                  description: 'Must be a valid date in the format <code>H:i</code>.'
+                  example: '12:19'
+                after:
+                  type: string
+                  description: 'Must be a valid date in the format <code>H:i</code>. Must be a date after <code>before</code>.'
+                  example: '2091-09-28'
+              required:
+                - name
+      security: []
+  /api/update_category:
+    patch:
+      summary: ''
+      operationId: patchApiUpdate_category
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: ''
+                  example: quo
+                name:
+                  type: string
+                  description: ''
+                  example: null
+                before:
+                  type: string
+                  description: 'Must be a valid date in the format <code>H:i</code>.'
+                  example: '12:19'
+                after:
+                  type: string
+                  description: 'Must be a valid date in the format <code>H:i</code>. Must be a date after <code>before</code>.'
+                  example: '2103-10-17'
+              required:
+                - id
+      security: []
+  '/api/delete_category/{id}':
+    delete:
+      summary: ''
+      operationId: deleteApiDelete_categoryId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the delete category.'
+        example: et
+        required: true
+        schema:
+          type: string
+  /api/list_categories:
+    get:
+      summary: ''
+      operationId: getApiList_categories
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: false
+                  message: 'Token not found!'
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Token not found!'
+      tags:
+        - Endpoints
+      security: []
+  /api/create_sauce:
+    post:
+      summary: ''
+      operationId: postApiCreate_sauce
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: reprehenderit
+              required:
+                - name
+      security: []
+  /api/update_sauce:
+    patch:
+      summary: ''
+      operationId: patchApiUpdate_sauce
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: ''
+                  example: vitae
+                name:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - id
+      security: []
+  '/api/delete_sauce/{id}':
+    delete:
+      summary: ''
+      operationId: deleteApiDelete_sauceId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the delete sauce.'
+        example: dicta
+        required: true
+        schema:
+          type: string
+  /api/list_sauces:
+    get:
+      summary: ''
+      operationId: getApiList_sauces
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: false
+                  message: 'Token not found!'
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Token not found!'
+      tags:
+        - Endpoints
+      security: []
+  /api/create_food:
+    post:
+      summary: ''
+      operationId: postApiCreate_food
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: ab
+                photo:
+                  type: string
+                  description: 'Must not be greater than 1024 characters.'
+                  example: egftxbkiczisdxqpsfhbd
+                ingredients:
+                  type: string
+                  description: ''
+                  example: ullam
+                price:
+                  type: number
+                  description: ''
+                  example: 15922035.351457
+                allergic:
+                  type: string
+                  description: ''
+                  example: est
+                hot:
+                  type: integer
+                  description: ''
+                  example: 17
+                sauce:
+                  type: string
+                  description: ''
+                  example: id
+                category:
+                  type: string
+                  description: ''
+                  example: error
+              required:
+                - name
+                - ingredients
+                - price
+                - category
+      security: []
+  /api/update_food:
+    patch:
+      summary: ''
+      operationId: patchApiUpdate_food
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: ''
+                  example: null
+                name:
+                  type: string
+                  description: ''
+                  example: null
+                photo:
+                  type: string
+                  description: 'Must not be greater than 1024 characters.'
+                  example: kc
+                ingredients:
+                  type: string
+                  description: ''
+                  example: laudantium
+                price:
+                  type: number
+                  description: ''
+                  example: 14.92
+                allergic:
+                  type: string
+                  description: ''
+                  example: rerum
+                hot:
+                  type: integer
+                  description: ''
+                  example: 5
+                sauce:
+                  type: string
+                  description: ''
+                  example: porro
+                category:
+                  type: string
+                  description: ''
+                  example: null
+      security: []
+  '/api/delete_food/{id}':
+    delete:
+      summary: ''
+      operationId: deleteApiDelete_foodId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the delete food.'
+        example: molestiae
+        required: true
+        schema:
+          type: string
+  /api/list_foods:
+    get:
+      summary: ''
+      operationId: getApiList_foods
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: false
+                  message: 'Token not found!'
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Token not found!'
+      tags:
+        - Endpoints
+      security: []
+  /api/create_beverage:
+    post:
+      summary: ''
+      operationId: postApiCreate_beverage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: et
+                photo:
+                  type: string
+                  description: 'Must not be greater than 1024 characters.'
+                  example: tubermnvbgasovowple
+                ingredients:
+                  type: string
+                  description: ''
+                  example: fugit
+                price:
+                  type: number
+                  description: ''
+                  example: 1953993.2
+                allergic:
+                  type: string
+                  description: ''
+                  example: quos
+                category:
+                  type: string
+                  description: ''
+                  example: labore
+              required:
+                - name
+                - ingredients
+                - price
+                - category
+      security: []
+  /api/update_beverage:
+    patch:
+      summary: ''
+      operationId: patchApiUpdate_beverage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: ''
+                  example: null
+                name:
+                  type: string
+                  description: ''
+                  example: null
+                photo:
+                  type: string
+                  description: 'Must not be greater than 1024 characters.'
+                  example: zevkiniwyedjkvvniea
+                ingredients:
+                  type: string
+                  description: ''
+                  example: voluptatem
+                price:
+                  type: number
+                  description: ''
+                  example: 416.883796546
+                allergic:
+                  type: string
+                  description: ''
+                  example: dolorum
+                category:
+                  type: string
+                  description: ''
+                  example: null
+      security: []
+  '/api/delete_beverage/{id}':
+    delete:
+      summary: ''
+      operationId: deleteApiDelete_beverageId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the delete beverage.'
+        example: laboriosam
+        required: true
+        schema:
+          type: string
+  /api/list_beverages:
+    get:
+      summary: ''
+      operationId: getApiList_beverages
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: false
+                  message: 'Token not found!'
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Token not found!'
+      tags:
+        - Endpoints
+      security: []
+  /api/create_order:
+    post:
+      summary: ''
+      operationId: postApiCreate_order
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                table:
+                  type: integer
+                  description: ''
+                  example: 17
+                order_list:
+                  type: array
+                  description: ''
+                  example:
+                    - aperiam
+                  items:
+                    type: integer
+                note:
+                  type: string
+                  description: ''
+                  example: quod
+              required:
+                - table
+                - order_list
+      security: []
+  /api/change_order_status:
+    post:
+      summary: ''
+      operationId: postApiChange_order_status
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ''
+                  example: 20
+                status:
+                  type: integer
+                  description: 'Must be at least 1. Must not be greater than 2.'
+                  example: 1
+              required:
+                - id
+                - status
+      security: []
+  /api/delete_order:
+    delete:
+      summary: ''
+      operationId: deleteApiDelete_order
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ''
+                  example: 1
+              required:
+                - id
+      security: []
+  /api/print_order:
+    post:
+      summary: ''
+      operationId: postApiPrint_order
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ''
+                  example: 20
+              required:
+                - id
+      security: []
+  '/api/{blob}':
+    get:
+      summary: ''
+      operationId: getApiBlob
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: false
+                  message: 'The url that you requested could not be found!'
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'The url that you requested could not be found!'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: blob
+        description: ''
+        example: esse
+        required: true
+        schema:
+          type: string
+  /api/login:
+    post:
+      summary: 'Login User'
+      operationId: loginUser
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'User Access Control'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Email of User'
+                  example: noelia.roberts@example.com
+                password:
+                  type: string
+                  description: 'Password of User'
+                  example: 'TC{Jtl0xKlJ!q%'
+      security: []
+  /api/user_detail:
+    get:
+      summary: 'Get User Detail'
+      operationId: getUserDetail
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: false
+                  message: 'Token not found!'
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Token not found!'
+      tags:
+        - 'User Access Control'
+      security: []
+  /api/add_user:
+    post:
+      summary: ''
+      operationId: postApiAdd_user
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'User Access Control'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: grimes.orlando@example.net
+                password:
+                  type: string
+                  description: 'Must be at least 6 characters.'
+                  example: '"jF(mpFP.wISU-8t'
+                name:
+                  type: string
+                  description: ''
+                  example: quia
+                address:
+                  type: string
+                  description: ''
+                  example: repudiandae
+                dob:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2023-07-21T12:19:54'
+              required:
+                - email
+                - password
+                - name
+                - address
+                - dob
+      security: []
+  /api/update_user:
+    patch:
+      summary: ''
+      operationId: patchApiUpdate_user
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'User Access Control'
+      security: []
+  /api/update_user_pwd:
+    patch:
+      summary: 'Update Details or Password'
+      operationId: updateDetailsOrPassword
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'User Access Control'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: 'User ID'
+                  example: 3
+                password:
+                  type: string
+                  description: 'New Password'
+                  example: 'zDFmtCm4"dy%VIceu5Y>'
+                password_confirmation:
+                  type: string
+                  description: 'New Password Confirmation'
+                  example: libero
+      security: []
+  /api/list_users:
+    get:
+      summary: 'Get user details'
+      operationId: getUserDetails
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: false
+                  message: 'Token not found!'
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Token not found!'
+      tags:
+        - 'User Access Control'
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: 'User Access Control'
+    description: ''

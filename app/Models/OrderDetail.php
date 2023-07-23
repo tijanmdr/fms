@@ -19,11 +19,13 @@ class OrderDetail extends Model
 
     public function beverageName()
     {
-        return $this->belongsTo(Beverage::class, 'beverage_id');
+        return $this->belongsTo(Beverage::class, 'beverage_id')
+            ->select('name');
     }
 
     public function foodName()
     {
-        return $this->belongsTo(Food::class,'food_id');
+        return $this->belongsTo(Food::class,'food_id')
+            ->select('name');
     }
 }
