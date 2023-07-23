@@ -46,6 +46,15 @@ Route::group(['middleware'=>['jwt.verify']], function () {
 //    Route::patch('update_order', 'OrderController@updateOrder');
     Route::post('print_order', 'OrderController@printOrder');
     Route::get('active_orders', 'OrderController@getActiveOrders');
+
+    // bookings
+    Route::prefix('booking')->group(function () {
+        Route::post('create', 'BookingController@create');
+        Route::delete('delete', 'BookingController@delete');
+        Route::patch('toggle', 'BookingController@toggle');
+        Route::get('list', 'BookingController@bookingList');
+        Route::get('list/{date}', 'BookingController@bookingList');
+    });
 });
 
 // 404 error in json
