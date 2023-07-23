@@ -44,6 +44,7 @@ Route::group(['middleware'=>['jwt.verify']], function () {
     Route::delete('delete_order', 'OrderController@deleteOrder');
 //    Route::patch('update_order', 'OrderController@updateOrder');
     Route::post('print_order', 'OrderController@printOrder');
+    Route::get('active_orders', 'OrderController@getActiveOrders');
 });
 
 // 404 error in json

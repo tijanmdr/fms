@@ -33,8 +33,8 @@ class Order extends Model
         return $query->where('status', 3);
     }
 
-    public function scopeCheckStatus($query, $status) {
-        return $query->where('status', '!=', $status);
+    public function scopeCheckStatus($query, $status, $status2 = null) {
+        return $query->where('status', '!=', [$status, $status2]);
     }
 
     public function details()

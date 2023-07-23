@@ -77,6 +77,22 @@ class OrderController extends Controller
         }
     }
 
+    public function getActiveOrders()
+    {
+        $orders = $this->order->checkStatus(3,2)->latest()->get(); // avoiding completed and deleted orders
+        foreach ($orders as $order) {
+        $order['details'] = $order->details;
+            foreach ($order['details'] as $detail) {
+                if ($detail->food_id) {
+                    $detail->foodName;
+                } elseif($detail->beverage_id) {
+                    $detail->beverageName;
+                }
+            }
+        }
+        return returnMessage(true, 'Active orders successfully retrieved', $orders);
+    }
+
     public function changeOrderStatus(Request $req)
     {
         $req = $req->only('id', 'status');
